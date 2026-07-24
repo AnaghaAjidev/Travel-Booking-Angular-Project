@@ -18,5 +18,5 @@ app.controller("loginController", function ($scope) {
 
         window.location.href = "dashboard.html";
     };
-
+    
 });

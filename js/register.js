@@ -20,5 +20,5 @@ app.controller("registerController", function ($scope) {
 
         window.location.href = "index.html";
     };
-
+    
 });

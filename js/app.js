@@ -235,7 +235,7 @@ app.controller("travelController", function ($scope) {
         return total / $scope.reviews.length;
     };
 
-        $scope.bookingDestinations = [
+    $scope.bookingDestinations = [
         "Kerala",
         "Goa",
         "Kashmir",
@@ -248,10 +248,10 @@ app.controller("travelController", function ($scope) {
     ];
 
     $scope.packageTypes = [
-    "Standard",
-    "Deluxe",
-    "Premium"
-];
+        "Standard",
+        "Deluxe",
+        "Premium"
+    ];
 
     $scope.bookings = [];
 
@@ -307,116 +307,116 @@ app.controller("travelController", function ($scope) {
         }
     };
 
-   $scope.logout = function () {
+    $scope.logout = function () {
 
-    alert("Logout clicked");
+        alert("Logout clicked");
 
-    if (confirm("Are you sure you want to logout?")) {
+        if (confirm("Are you sure you want to logout?")) {
 
-        sessionStorage.removeItem("isLoggedIn");
-        sessionStorage.removeItem("userEmail");
+            sessionStorage.removeItem("isLoggedIn");
+            sessionStorage.removeItem("userEmail");
 
-        alert("Session removed");
+            alert("Session removed");
 
-        window.location.href = "index.html";
-    }
-};
+            window.location.href = "index.html";
+        }
+    };
 
-$scope.packages = [
+    $scope.packages = [
 
-    // ✈ FLIGHT
+        // ✈ FLIGHT
 
-    {
-        destination: "Switzerland",
-        packageName: "Alpine Adventure",
-        duration: "7 Days / 6 Nights",
-        price: 85000,
-        transport: "Flight",
-        hotel: "Swiss Alpine Resort",
-        rating: 4.9,
-        available: true,
-        image: "assets/images/swiss1.jpg.jpeg"
-    },
+        {
+            destination: "Switzerland",
+            packageName: "Alpine Adventure",
+            duration: "7 Days / 6 Nights",
+            price: 85000,
+            transport: "Flight",
+            hotel: "Swiss Alpine Resort",
+            rating: 4.9,
+            available: true,
+            image: "assets/images/swiss1.jpg.jpeg"
+        },
 
-    {
-        destination: "France",
-        packageName: "Paris Explorer",
-        duration: "6 Days / 5 Nights",
-        price: 78000,
-        transport: "Flight",
-        hotel: "Eiffel View Hotel",
-        rating: 4.8,
-        available: true,
-        image: "assets/images/france.jpg.jpeg"
-    },
+        {
+            destination: "France",
+            packageName: "Paris Explorer",
+            duration: "6 Days / 5 Nights",
+            price: 78000,
+            transport: "Flight",
+            hotel: "Eiffel View Hotel",
+            rating: 4.8,
+            available: true,
+            image: "assets/images/france.jpg.jpeg"
+        },
 
-    {
-        destination: "Thailand",
-        packageName: "Bangkok & Phuket",
-        duration: "5 Days / 4 Nights",
-        price: 55000,
-        transport: "Flight",
-        hotel: "Phuket Beach Resort",
-        rating: 4.7,
-        available: true,
-        image: "assets/images/thai1.jpg.jpeg"
-    },
+        {
+            destination: "Thailand",
+            packageName: "Bangkok & Phuket",
+            duration: "5 Days / 4 Nights",
+            price: 55000,
+            transport: "Flight",
+            hotel: "Phuket Beach Resort",
+            rating: 4.7,
+            available: true,
+            image: "assets/images/thai1.jpg.jpeg"
+        },
 
-    // 🚆 TRAIN
+        // 🚆 TRAIN
 
-    {
-        destination: "Goa",
-        packageName: "Beach Escape",
-        duration: "4 Days / 3 Nights",
-        price: 15000,
-        transport: "Train",
-        hotel: "Beachside Resort",
-        rating: 4.8,
-        available: true,
-        image: "assets/images/Goa.jfif.jpeg"
-    },
-
-
-    {
-        destination: "Darjeeling",
-        packageName: "Toy Train Experience",
-        duration: "4 Days / 3 Nights",
-        price: 16000,
-        transport: "Train",
-        hotel: "Hill View Hotel",
-        rating: 4.8,
-        available: true,
-        image: "assets/images/darj.jpg.jpeg"
-    },
-
-    // 🚌 BUS
+        {
+            destination: "Goa",
+            packageName: "Beach Escape",
+            duration: "4 Days / 3 Nights",
+            price: 15000,
+            transport: "Train",
+            hotel: "Beachside Resort",
+            rating: 4.8,
+            available: true,
+            image: "assets/images/Goa.jfif.jpeg"
+        },
 
 
-    {
-        destination: "Ooty",
-        packageName: "Hill Station Holiday",
-        duration: "3 Days / 2 Nights",
-        price: 8500,
-        transport: "Bus",
-        hotel: "Luxury Cottage",
-        rating: 4.6,
-        available: true,
-        image: "assets/images/ooty1.jfif.jpeg"
-    },
+        {
+            destination: "Darjeeling",
+            packageName: "Toy Train Experience",
+            duration: "4 Days / 3 Nights",
+            price: 16000,
+            transport: "Train",
+            hotel: "Hill View Hotel",
+            rating: 4.8,
+            available: true,
+            image: "assets/images/darj.jpg.jpeg"
+        },
 
-    {
-        destination: "Manali",
-        packageName: "Snow Adventure",
-        duration: "5 Days / 4 Nights",
-        price: 18000,
-        transport: "Bus",
-        hotel: "Mountain View Resort",
-        rating: 4.7,
-        available: true,
-        image: "assets/images/manali.jfif.jpeg"
-    }
+        // 🚌 BUS
 
-];
 
-    
+        {
+            destination: "Ooty",
+            packageName: "Hill Station Holiday",
+            duration: "3 Days / 2 Nights",
+            price: 8500,
+            transport: "Bus",
+            hotel: "Luxury Cottage",
+            rating: 4.6,
+            available: true,
+            image: "assets/images/ooty1.jfif.jpeg"
+        },
+
+        {
+            destination: "Manali",
+            packageName: "Snow Adventure",
+            duration: "5 Days / 4 Nights",
+            price: 18000,
+            transport: "Bus",
+            hotel: "Mountain View Resort",
+            rating: 4.7,
+            available: true,
+            image: "assets/images/manali.jfif.jpeg"
+        }
+
+    ];
+
+
 });
