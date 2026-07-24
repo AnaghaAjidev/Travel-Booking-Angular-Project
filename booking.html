@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="travelApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-controller="travelController">
+
+    <header class="header-area header-sticky">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo"></a>
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="booking.html" class="active">Booking</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="second-page-heading">
+        <div class="container">
+            <h4>Book Your Dream Trip</h4>
+            <h2>Travel Booking</h2>
+            <p>Reserve your holiday package by filling in the form below.</p>
+        </div>
+    </div>
+
+    <section class="reservation-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="bookingForm" ng-submit="bookTour()" novalidate>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <label>Customer Name</label>
+                                <input class="form-control" type="text" name="customerName"
+                                    ng-model="booking.customerName" required ng-minlength="3">
+                                <p style="color:red"
+                                    ng-show="bookingForm.customerName.$touched && bookingForm.customerName.$invalid">
+                                    Enter customer name.</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" name="email" ng-model="booking.email"
+                                    ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/" required>
+                                <p class="text-danger"
+                                    ng-show="bookingForm.$submitted && bookingForm.email.$error.required">
+                                    Email is required.
+                                </p>
+
+                                <p class="text-danger"
+                                    ng-show="bookingForm.$submitted && bookingForm.email.$error.pattern">
+                                    Enter a valid email address.
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Phone Number</label>
+
+                                <input type="tel" class="form-control" name="phone" ng-model="booking.phone"
+                                    ng-pattern="/^[0-9]{10}$/" ng-minlength="10" ng-maxlength="10" required>
+
+                                <p class="text-danger"
+                                    ng-show="bookingForm.$submitted && bookingForm.phone.$error.required">
+                                    Phone number is required.
+                                </p>
+
+                                <p class="text-danger"
+                                    ng-show="bookingForm.$submitted && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength)">
+                                    Phone number must be exactly 10 digits.
+                                </p>
+
+                                <p class="text-danger"
+                                    ng-show="bookingForm.$submitted && bookingForm.phone.$error.pattern">
+                                    Only numeric digits are allowed.
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Destination</label>
+                                <select class="form-control" ng-model="booking.destination" name="destination" required
+                                    ng-options="destination.name as destination.name for destination in destinations">
+
+                                    <option value="">Select Destination</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Travel Date</label>
+                                <input class="form-control" type="date" ng-model="booking.travelDate" required>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Number of Travelers</label>
+                                <input class="form-control" type="number" ng-model="booking.travellers" min="1"
+                                    required>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Package Type</label>
+                                <select class="form-select" ng-model="booking.package" ng-options="p for p in packages"
+                                    required>
+                                    <option value="">Select Package</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Booking ID</label>
+                                <input class="form-control" type="text" ng-model="booking.bookingId" ng-readonly="true">
+                            </div>
+
+                            <div class="col-lg-12 text-center mt-4">
+                                <button class="main-button" type="submit">Book
+                                    Now</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-12 mt-5">
+
+                    <h3 class="text-white text-center mb-4">Booking Summary</h3>
+
+                    <table class="table table-bordered table-hover text-center">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Customer Name</th>
+                                <th>Destination</th>
+                                <th>Package</th>
+                                <th>Travel Date</th>
+                                <th>No. of Travelers</th>
+                                <th>Total Cost</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr ng-repeat="b in bookings">
+
+                                <td class="text-white">{{b.bookingId}}</td>
+
+                                <td class="text-white">{{b.customerName}}</td>
+
+                                <td class="text-white">{{b.destination}}</td>
+
+                                <td class="text-white">{{b.package}}</td>
+
+                                <td class="text-white">
+                                    {{b.travelDate | date:'dd/MM/yyyy'}}
+                                </td>
+
+                                <td class="text-white">
+                                    {{b.travellers}}
+                                </td>
+
+                                <td class="text-white">
+                                    ₹ {{b.totalCost | number:0}}
+                                </td>
+
+                            </tr>
+
+                            <tr ng-if="bookings.length==0">
+
+                                <td colspan="7" class="text-center text-white">
+
+                                    No bookings available.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="text-center">© 2026 Travel & Tourism</p>
+        </div>
+    </footer>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+
+</html>
