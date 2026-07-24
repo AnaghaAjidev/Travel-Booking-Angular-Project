@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="travelApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="js/register.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image: url("assets/images/banner-04.jpg") !important;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .register-box {
+            width: 420px;
+            padding: 28px;
+            background: rgba(255, 255, 255, .96);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #22b3c1;
+            margin-bottom: 10px;
+        }
+
+        .mb-3 {
+            margin-bottom: 12px !important;
+        }
+
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        label {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .form-control {
+            height: 44px;
+            border-radius: 25px;
+        }
+
+        .btn-register {
+            width: 100%;
+            border: none;
+            border-radius: 30px;
+            background: #22b3c1;
+            color: #fff;
+            height: 50px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .btn-register:hover {
+            background: #1695a3;
+        }
+
+        .text-danger {
+            font-size: 13px;
+        }
+
+        .bottom-link {
+            text-align: center;
+            margin-top: 18px;
+            color: #000;
+        }
+
+        .bottom-link a {
+            color: #22b3c1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="registerController">
+
+    <div class="register-box">
+
+        <h2>Create Account</h2>
+
+        <p class="subtitle">Register to start your travel journey</p>
+
+        <form name="registerForm" ng-submit="register()">
+
+            <div class="mb-3">
+                <label>Full Name</label>
+
+                <input type="text" class="form-control" name="name" ng-model="user.name" required ng-minlength="3">
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.name.$error.required">
+                    Name is required.
+                </p>
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.name.$error.minlength">
+                    Minimum 3 characters.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+
+                <input type="email" class="form-control" name="email" ng-model="user.email" required>
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.email.$error.required">
+                    Email is required.
+                </p>
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.email.$error.email">
+                    Enter a valid email.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label>Phone Number</label>
+
+                <input type="tel" class="form-control" name="phone" ng-model="user.phone" required
+                    ng-pattern="/^[0-9]{10}$/">
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.phone.$error.required">
+                    Phone number is required.
+                </p>
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.phone.$error.pattern">
+                    Enter a valid 10-digit phone number.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+
+                <input type="password" class="form-control" name="password" ng-model="user.password" required
+                    ng-minlength="6">
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.password.$error.required">
+                    Password is required.
+                </p>
+
+                <p class="text-danger" ng-show="registerForm.$submitted && registerForm.password.$error.minlength">
+                    Minimum 6 characters.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label>Confirm Password</label>
+
+                <input type="password" class="form-control" name="confirmPassword" ng-model="user.confirmPassword"
+                    required>
+
+                <p class="text-danger"
+                    ng-show="registerForm.$submitted && registerForm.confirmPassword.$error.required">
+                    Confirm your password.
+                </p>
+
+                <p class="text-danger" ng-show="registerForm.$submitted &&
+            user.password != user.confirmPassword">
+                    Passwords do not match.
+                </p>
+            </div>
+
+            <button type="submit" class="btn-register">
+                Create Account
+            </button>
+
+            <div class="bottom-link">
+                Already have an account?
+                <a href="index.html">Login</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

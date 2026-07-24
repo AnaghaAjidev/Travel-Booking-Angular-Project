@@ -25,7 +25,7 @@
             <nav class="main-nav">
                 <a href="index.html" class="logo"></a>
                 <ul class="nav">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="booking.html" class="active">Reservation</a></li>
                     <li><a href="reviews.html">Reviews</a></li>
@@ -118,8 +118,8 @@
 
                             <div class="col-lg-6">
                                 <label>Package Type</label>
-                                <select class="form-select" ng-model="booking.package" ng-options="p for p in packages"
-                                    required>
+                                <select class="form-select" ng-model="booking.package"
+                                    ng-options="type for type in packageTypes" required>
                                     <option value="">Select Package</option>
                                 </select>
                             </div>
@@ -206,7 +206,7 @@
     <footer>
         <div class="container">
             <p class="text-center">© 2026 Travel & Tourism</p>
-             <p>Developed By TechHive</p>
+            <p>Developed By TechHive</p>
         </div>
     </footer>
 
