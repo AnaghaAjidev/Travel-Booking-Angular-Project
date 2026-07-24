@@ -126,8 +126,8 @@ app.controller("travelController", function ($scope) {
 
     $scope.reviews = [
         {
-            name: "Anagha",
-            destination: "Kerala",
+            name: "Gayu",
+            destination: "Switzerland",
             rating: 5,
             text: "Amazing experience! Beautiful places and excellent service.",
             date: new Date()
